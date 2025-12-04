@@ -19,7 +19,7 @@ class Settings(BaseModel):
     EMBED_MODEL: str = "all-MiniLM-L6-v2"
     LLM_MODEL: str = "google/flan-t5-small"
     EMBED_DIM: int = 384
-    CACHE_DIR: str = "cache" Hi
+    CACHE_DIR: str = "cache"
 
 settings = Settings()
 
