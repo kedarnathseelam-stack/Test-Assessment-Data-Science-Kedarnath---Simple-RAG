@@ -1,4 +1,3 @@
-
 from sentence_transformers import SentenceTransformer
 from vector_db import search_vectors
 from cache import load_cache, save_cache
