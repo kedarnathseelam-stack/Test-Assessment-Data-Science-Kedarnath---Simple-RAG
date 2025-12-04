@@ -1,28 +1,20 @@
-from sentence_transformers import SentenceTransformer
-from vector_db import search_vectors
-from cache import load_cache, save_cache
-from config import settings
+from embed import Embedder
+from vector_db import VectorDB
+from cache import EmbedCache
+from config import TOP_K
 
-embedder = SentenceTransformer(settings.EMBED_MODEL)
+embedder = Embedder()
+db = VectorDB()
+cache = EmbedCache()
 
-def retrieve(query, top_k=3):
-    cached = load_cache("retrieval_" + query)
-    if cached:
-        return cached["context"], cached["sources"]
+def retrieve(query):
+    # Avoid re-embedding if already cached
+    cached = cache.get(query)
+    if cached is not None:
+        query_emb = cached
+    else:
+        query_emb = embedder.embed(query)
+        cache.set(query, query_emb)
 
-    query_vec = embedder.encode(query)
-    results = search_vectors(query_vec, top_k)
-
-    context = "\n\n".join([r.payload["text"] for r in results])
-    sources = [r.payload["source"] for r in results]
-
-    save_cache("retrieval_" + query, {"context": context, "sources": sources})
-
-    return context, sources
-
-
-
-
-
-
-
+    results = db.search(query_emb, top_k=TOP_K)
+    return results
