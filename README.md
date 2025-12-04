@@ -51,37 +51,23 @@ All inference is **local**.
 # Installation
 
 ### 1. Clone the repository
-git clone https://github.com/<your-repo>/<project>.git
+git clone [https://github.com/<your-repo>/<project>.git](https://github.com/kedarnathseelam-stack/Test-Assessment-Data-Science-Kedarnath---Simple-RAG)
 cd <project>
 2. Create and activate a virtual environment
-bash
-Copy code
 python -m venv venv
-source venv/bin/activate      # Linux/Mac
-venv\Scripts\activate         # Windows
+venv\Scripts\activate         
 3. Install dependencies
-bash
-Copy code
 pip install -r requirements.txt
 4. Add the Telegram token
 Create a .env file:
-
-ini
-Copy code
 TELEGRAM_BOT_TOKEN=YOUR_TELEGRAM_TOKEN
-📚 Build the Vector Database (Run Once)
-bash
-Copy code
+Build the Vector Database (Run Once)
 python build_db.py
 This script will:
-
 Load documents from /docs
-
 Chunk them
-
 Embed them
+Insert them into the sqlite vec database
 
-Insert them into the sqlite-vec database
-
-▶️ Run the Bot Locally
+Run the Bot Locally
 The main entry file is bot.py
