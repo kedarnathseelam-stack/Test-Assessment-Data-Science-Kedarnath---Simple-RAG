@@ -1,4 +1,3 @@
-
 from embedd import build_vector_db
 from bot import run_bot
 
