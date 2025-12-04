@@ -121,6 +121,15 @@ System Design Diagram
                │ Top-k Retrieved Chunks       │
                └───────────┬─────────────────┘
                            ▼
+
+
+
+
+
+
+
+
+                           
                ┌─────────────────────────────┐
                │ Final RAG Answer + Sources   │
                └───────────┬─────────────────┘
