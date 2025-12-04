@@ -1,0 +1,5 @@
+python-telegram-bot==20.5
+sentence-transformers==2.2.2
+sqlite-vec==0.6.2
+transformers==4.44.0
+torch>=2.0.0
